@@ -1,8 +1,7 @@
 import express from 'express';
-import bodyParser from 'body-parser';
+//import bodyParser from 'body-parser';
 import cors from 'cors';
 import connectDB from './config/db.js';
-
 import multer from 'multer';
 import helmet from 'helmet';
 import morgan from 'morgan';
@@ -32,8 +31,10 @@ app.use(helmet());
 
 app.use(helmet.crossOriginResourcePolicy({ policy: 'cross-origin' }));
 app.use(morgan('common'));
-app.use(bodyParser.json({ limit: '30mb', extended: true }));
-app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
+app.use(express.json({ limit: '30mb', extended: true }));
+app.use(express.urlencoded({ limit: '30mb', extended: true }));
+//app.use(bodyParser.json({ limit: '30mb', extended: true }));
+//app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
 app.use(cors());
 app.use('assets', express.static(path.join(__dirname, 'public/assets')));
 
