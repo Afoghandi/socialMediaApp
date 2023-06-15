@@ -23,6 +23,7 @@ const registerSchema = yup.object().shape({
 	lastName: yup.string().required('required'),
 	email: yup.string().email('invalid email').required('required'),
 	password: yup.string().required('required'),
+	confirmPassword: yup.string().required('required'),
 	location: yup.string().required('required'),
 	occupation: yup.string().required('required'),
 	picture: yup.string().required('required'),
@@ -37,6 +38,7 @@ const initialValueRegister = {
 	lastName: '',
 	email: '',
 	password: '',
+	confirmPassword: '',
 	location: '',
 	occupation: '',
 	picture: '',
@@ -58,7 +60,9 @@ const Form = () => {
 	//Call functionality from backend
 	const register = async (values, onSubmitProps) => {
 		//alows us to send form info with image
-		const formData = new formData();
+		console.log('clicked');
+		const formData = new FormData();
+
 		for (let value in values) {
 			formData.append(value, values[value]);
 		}
@@ -130,7 +134,8 @@ const Form = () => {
 								<TextField
 									label='First Name'
 									onBlur={handleBlur}
-									onChange={values.firstName}
+									value={values.firstName}
+									onChange={handleChange}
 									name='firstName'
 									error={
 										Boolean(touched.firstName) && Boolean(errors.firstName)
@@ -141,7 +146,8 @@ const Form = () => {
 								<TextField
 									label='Last Name'
 									onBlur={handleBlur}
-									onChange={values.lastName}
+									value={values.lastName}
+									onChange={handleChange}
 									name='lastName'
 									error={Boolean(touched.lastName) && Boolean(errors.lastName)}
 									helperText={touched.lastName && errors.lastName}
@@ -150,7 +156,8 @@ const Form = () => {
 								<TextField
 									label='Location'
 									onBlur={handleBlur}
-									onChange={values.location}
+									value={values.location}
+									onChange={handleChange}
 									name='location'
 									error={Boolean(touched.location) && Boolean(errors.location)}
 									helperText={touched.location && errors.location}
@@ -159,7 +166,8 @@ const Form = () => {
 								<TextField
 									label='Occupation'
 									onBlur={handleBlur}
-									onChange={values.occupation}
+									value={values.occupation}
+									onChange={handleChange}
 									name='occupation'
 									error={
 										Boolean(touched.occupation) && Boolean(errors.occupation)
@@ -174,10 +182,10 @@ const Form = () => {
 									p='1rem'
 								>
 									<Dropzone
-										acceptedFiles='.jpg, .jpeg, .png'
+										acceptedFiles='.jpg,.jpeg,.png'
 										multiple={false}
 										onDrop={(acceptedFiles) =>
-											setFieldValue('pictire', acceptedFiles[0])
+											setFieldValue('picture', acceptedFiles[0])
 										}
 									>
 										{({ getRootProps, getInputProps }) => (
@@ -205,22 +213,51 @@ const Form = () => {
 						<TextField
 							label='Email'
 							onBlur={handleBlur}
-							onChange={values.email}
+							value={values.email}
+							onChange={handleChange}
 							name='email'
 							error={Boolean(touched.email) && Boolean(errors.email)}
 							helperText={touched.email && errors.email}
 							sx={{ gridColumn: 'span 4' }}
 						/>
-						<TextField
-							label='Password'
-							type='password'
-							onBlur={handleBlur}
-							onChange={values.password}
-							name='password'
-							error={Boolean(touched.password) && Boolean(errors.password)}
-							helperText={touched.password && errors.password}
-							sx={{ gridColumn: 'span 4' }}
-						/>
+						{isLogin ? (
+							<TextField
+								label='Password'
+								type='password'
+								onBlur={handleBlur}
+								value={values.password}
+								onChange={handleChange}
+								name='password'
+								error={Boolean(touched.password) && Boolean(errors.password)}
+								helperText={touched.password && errors.password}
+								sx={{ gridColumn: 'span 4' }}
+							/>
+						) : (
+							<>
+								<TextField
+									label='Password'
+									type='password'
+									onBlur={handleBlur}
+									value={values.password}
+									onChange={handleChange}
+									name='password'
+									error={Boolean(touched.password) && Boolean(errors.password)}
+									helperText={touched.password && errors.password}
+									sx={{ gridColumn: 'span 4' }}
+								/>{' '}
+								<TextField
+									label='Confirm Password'
+									type='password'
+									onBlur={handleBlur}
+									value={values.confirmPassword}
+									onChange={handleChange}
+									name='confirmPassword'
+									error={Boolean(touched.password) && Boolean(errors.password)}
+									helperText={touched.password && errors.password}
+									sx={{ gridColumn: 'span 4' }}
+								/>
+							</>
+						)}
 					</Box>
 
 					{/**BUTTONS */}

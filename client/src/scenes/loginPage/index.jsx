@@ -15,7 +15,7 @@ export const LoginPage = () => {
 			>
 				{' '}
 				<Typography fontWeight='bold' fontSize='32px' color='primary'>
-					Sociopedia
+					OshunMedia
 				</Typography>
 			</Box>
 
