@@ -13,7 +13,7 @@ export const verifyToken = async (req, res, next) => {
 		res.status(401).json({ msg: 'Token is not valid' });
 	}*/
 	try {
-		let token = req.header('Authorisation');
+		let token = req.header('Authorization');
 		if (!token) {
 			return res.status(403).send('Access Denied');
 		}
