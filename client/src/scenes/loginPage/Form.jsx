@@ -59,8 +59,8 @@ const Form = () => {
 
 	//Call functionality from backend
 	const register = async (values, onSubmitProps) => {
-		//alows us to send form info with image
-		console.log('clicked');
+		//allows us to send form info with image
+
 		const formData = new FormData();
 
 		for (let value in values) {
