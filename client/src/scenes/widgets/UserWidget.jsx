@@ -73,7 +73,7 @@ const UserWidget = ({ userId, picturePath }) => {
 							{firstName} {lastName}
 						</Typography>
 						<Typography color={medium}>
-							{friends ? `${friends.length}friends` : 'No friends yet'}
+							Number of friends: {friends?.length}
 						</Typography>
 					</Box>
 				</FlexBetween>

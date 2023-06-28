@@ -11,7 +11,7 @@ export const getUser = async (req, res) => {
 		const user = await User.findById(id);
 
 		//Return user
-		res.status(200).json({ msg: [user] });
+		res.status(200).json(user);
 	} catch (err) {
 		res.status(404).json({ message: err.message });
 	}
@@ -69,8 +69,8 @@ export const addRemoveFriend = async (req, res) => {
 		);
 		// Deconstruct data we want to send to front end
 		const formattedFriends = friends.map(
-			({ _id, firstName, LastName, occupation, location, picturePath }) => {
-				return { _id, firstName, LastName, occupation, location, picturePath };
+			({ _id, firstName, lastName, occupation, location, picturePath }) => {
+				return { _id, firstName, lastName, occupation, location, picturePath };
 			}
 		);
 		res.status(200).json(formattedFriends);
