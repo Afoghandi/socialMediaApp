@@ -29,8 +29,8 @@ export const getUserFriends = async (req, res) => {
 		);
 		// Deconstruct data we want to send to front end
 		const formattedFriends = friends.map(
-			({ _id, firstName, LastName, occupation, location, picturePath }) => {
-				return { _id, firstName, LastName, occupation, location, picturePath };
+			({ _id, firstName, lastName, occupation, location, picturePath }) => {
+				return { _id, firstName, lastName, occupation, location, picturePath };
 			}
 		);
 		res.status(200).json(formattedFriends);

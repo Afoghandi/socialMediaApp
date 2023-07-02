@@ -32,10 +32,13 @@ export const HomePage = () => {
 					<MyPostWidget picturePath={picturePath} />
 					<PostsWidget userId={_id} />
 				</Box>
-				{isNonMobileScreens && <box flexBasis='26%'></box>}
-				<AdvertWidget />
-				<Box m='2rem 0' />
-				<FriendListWidget userId={_id} />
+				{isNonMobileScreens && (
+					<box flexBasis='26%'>
+						<AdvertWidget />
+						<Box m='2rem 0' />
+						<FriendListWidget userId={_id} />
+					</box>
+				)}
 			</Box>
 		</Box>
 	);

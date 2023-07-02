@@ -5,6 +5,8 @@ import {
 	WorkOutlineOutlined,
 } from '@mui/icons-material';
 import { Box, Typography, Divider, useTheme } from '@mui/material';
+import linkedin from '../../assets/linkedin.png';
+import twitter from '../../assets/twitter.png';
 import UserImage from 'components/UserImage';
 import FlexBetween from 'components/FlexBetween';
 import WidgetWrapper from 'components/WidgetWrapper';
@@ -122,7 +124,7 @@ const UserWidget = ({ userId, picturePath }) => {
 
 				<FlexBetween gap='1rem' mb='0.5rem'>
 					<FlexBetween gap='1rem'>
-						<img src='../assets/twitter.png' alt='twitter' />
+						<img src={twitter} alt='twitter' />
 						<Box>
 							<Typography color={main} fontWeight='500'>
 								Twitter
@@ -135,7 +137,7 @@ const UserWidget = ({ userId, picturePath }) => {
 
 				<FlexBetween gap='1rem'>
 					<FlexBetween gap='1rem'>
-						<img src='../assets/linkedin.png' alt='linkedin' />
+						<img src={linkedin} alt='linkedin' />
 						<Box>
 							<Typography color={main} fontWeight='500'>
 								Linkedin
